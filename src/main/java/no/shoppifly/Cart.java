@@ -10,7 +10,7 @@ import java.util.List;
 @Builder
 public class Cart {
     private String id;
-    List<Item> items = new ArrayList<>();
+    List<Item items = new ArrayList<>();
 }
 
 @Data

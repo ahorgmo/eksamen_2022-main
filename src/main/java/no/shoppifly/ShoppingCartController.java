@@ -44,6 +44,13 @@ public class ShoppingCartController implements ApplicationListener<ApplicationRe
     @Timed
     public String checkout(@RequestBody Cart cart) {
         meterRegistry.counter("checkouts").increment();
+        
+        // Random timer to simulate dely
+        try {
+            Thread.sleep((long) (250 * Math.random()));
+        } catch (InterruptedException ignored) {
+        }
+        
         return cartService.checkout(cart);
     }
 

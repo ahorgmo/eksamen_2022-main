@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.micrometer.core.annotation.Timed;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 
@@ -40,6 +41,7 @@ public class ShoppingCartController implements ApplicationListener<ApplicationRe
      * @return an order ID
      */
     @PostMapping(path = "/cart/checkout")
+    @Timed
     public String checkout(@RequestBody Cart cart) {
         meterRegistry.counter("checkouts").increment();
         return cartService.checkout(cart);
@@ -69,7 +71,7 @@ public class ShoppingCartController implements ApplicationListener<ApplicationRe
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent event) {
 		
-		Gauge.builder("cart_count", cartService,
+		Gauge.builder("carts_count", cartService,
 		b -> b.getAllsCarts().size()).register(meterRegistry);
 		
 		Gauge.builder("cartsvalue_count", cartService,

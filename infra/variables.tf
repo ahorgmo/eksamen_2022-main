@@ -3,7 +3,7 @@ variable "candidate_id" {
 }
 
 /*
-##### Error: expected protocol to be one of [application http https lambda sms sqs], got email
+#####Error: expected protocol to be one of [application http https lambda sms sqs], got email
 variable "candidate_email"  {
   type = string
 }*/

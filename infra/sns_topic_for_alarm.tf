@@ -12,12 +12,12 @@ resource "aws_cloudwatch_metric_alarm" "cart_above_5" {
 
   alarm_description         = "This alarm goes off as soon as the total amount of carts over 3 repeating periods on 5 minutes exceeds 5"
   insufficient_data_actions = []
-  alarm_actions       = [aws_sns_topic.alarms.arn]
+  alarm_actions       = [aws_sns_topic.user_updates.arn]
 }
 
 
 
-resource "aws_sns_topic" "alarms" {
+resource "aws_sns_topic" "user_updates" {
   name = "alarm-topic-${var.candidate_id}"
 }
 

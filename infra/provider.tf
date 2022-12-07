@@ -2,12 +2,12 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.40.0"
+      version = "2.49.0"
     }
   }
   backend "s3" {
-    bucket = "pgr301-2021-terraform-state"
-    key    = "adho004/terraform-in-pipeline.state"
+    bucket = "analytics-1038"
+    key    = "1038/terraform-eksamen.state"
     region = "eu-north-1"
   }
 }

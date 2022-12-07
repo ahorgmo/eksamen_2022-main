@@ -28,7 +28,6 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan  -var="candidate_id=$CANDIDATE_ID" -no-color
-        continue-on-error: false
 
       - name: Terraform Apply
         run: terraform apply -var="candidate_id=$CANDIDATE_ID" -auto-approve

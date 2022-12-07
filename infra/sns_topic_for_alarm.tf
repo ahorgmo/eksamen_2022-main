@@ -16,6 +16,7 @@ resource "aws_cloudwatch_metric_alarm" "cart_above_5" {
 }
 
 
+
 resource "aws_sns_topic" "alarms" {
   name = "alarm-topic-${var.candidate_id}"
 }

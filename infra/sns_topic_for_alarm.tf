@@ -23,7 +23,7 @@ resource "aws_sns_topic" "alarms" {
 
 
 
-resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
+resource "aws_sns_topic_subscription" "alarms_sqs_target" {
   topic_arn = aws_sns_topic.alarms.arn
   protocol  = "email"
   endpoint  = var.candidate_email

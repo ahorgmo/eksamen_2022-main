@@ -3,8 +3,8 @@ variable "candidate_id" {
   type = string
 }
 
-/*
-#####Error: expected protocol to be one of [application http https lambda sms sqs], got email
+
 variable "candidate_email"  {
+  default = "adho004@student.kristiania.no"
   type = string
-}*/
+}

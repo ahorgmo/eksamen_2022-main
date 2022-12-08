@@ -4,7 +4,7 @@ terraform {
       source  = "hashicorp/aws"
       version = "4.40.0"
     }
-  }
+  } 
   backend "s3" {
     bucket = "analytics-1038"
     key    = "1038/terraform-eksamen.state"

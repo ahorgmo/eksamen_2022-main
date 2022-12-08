@@ -83,3 +83,14 @@ docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/<ditt ECR repo navn>
 
 ## Del 5 - Terraform og CloudWatch Dashboards
 ### Oppgave 1 – Hva er årsaken til dette problemet? Hvorfor forsøker Terraform å opprette en bucket, når den allerede eksisterer?
+  
+Da utviklerne kjørte workflowen første gang ble det opprettet en bucket med det navnet og en state fil lokalt. Erroren kommer rett og slett fordi den allerede finnes, og den vil ikke gjøre endringer i state filen fordi den klarer ikke å finne den. Ved å legge til en path for backend i provider.tf filen vil man ved å kjøre terraform init kunne sette opp en ny state fil. Man kan da bruke plan og apply for å gjøre endringer på denne.
+
+### Bugs / problemer
+  
+Når jeg pusher til working_branch kjører GitHub Actions grønt. Det samme gjelder når jeg kjører terraform i Cloud 9. Jeg har testet at alt fungerer i AWS med tanke på alarmer og metrics, men med en gang jeg kjører en pull request til main kjører ikke terraform builden grønt lenger. Den stopper på terraform apply med erroren: 
+  
+  Error: creating SNS Topic Subscription: InvalidParameter: Invalid parameter: Email address
+  
+Jeg har prøvd å troubleshoote på internett, og det nærmeste jeg kom var at AWS regionen kunne vært feil. Jeg la dette inn i build prosessen i workflows, men den kjørte fortsatt ikke grønt. Jeg har derfor lagt til continue-on-error: true, fordi jeg ser at alt fungerer som det skal på AWS. Ved å gå gjennom den seneste push historikken i git kan man se at de alltid kjører grønt, før den går på main.
+  

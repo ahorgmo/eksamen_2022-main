@@ -22,6 +22,9 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
+      - name: Setup region
+        run: aws configure set region AWS_REGION
+        
       - name: Terraform Init
         id: init
         run: terraform init 
